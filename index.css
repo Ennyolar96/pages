@@ -1,0 +1,565 @@
+Skip to content
+
+Create account
+
+43
+
+11
+
+106
+
+Cover image for How to create fully responsive product card using pure HTML, CSS.
+How to create fully responsive product card using pure HTML, CSS.
+#html #css #javascript #webdev
+
+Modern Web
+Aug 25 ・4 min read
+Hello, Today we'll see how to make fully responsive product page using only pure HTML and CSS. Our product card has awesome minimalist animations which makes amazing user experience.
+
+To see demo or you want coding tutorial. You can watch the tutorial below.
+
+Video Tutorial
+
+I appreciate if you can support me by subscribing my youtube channel.
+
+So, without wasting more time let's see how to code this.
+
+Code
+For this project, we have index.html and style.css file only. And img folder which contains 3 three images, which you can download from here.
+
+So let's start coding this.
+Start by writing basic HTML5 structure and link style.css file to the page. Then create product card structure like this.
+<div class="product">
+    <div class="product-img">
+        <img src="img/bag.png" alt="">
+        <span class="tag">new</span>
+    </div>
+    <div class="product-listing">
+
+    </div>
+</div>
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #966e4f;
+    font-family: 'roboto', sans-serif;
+}
+
+body::before{
+    content: '';
+    position: absolute;
+    left: 0%;
+    transform: translateX(-50%) skewX(-15deg);
+    width: 20px;
+    height: 100%;
+    background: #966e4f;
+    border-left: 60px solid #eae3d2;
+    border-right: 30px solid #eae3d2;
+    opacity: 0;
+    animation: slide-in 2s 1.5s forwards 1;
+}
+
+@keyframes slide-in{
+    100%{
+        opacity: 1;
+        left: 50%;
+    }
+}
+
+.product{
+    position: relative;
+    width: 1000px;
+    min-width: 350px;
+    min-height: 500px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-img{
+    width: 40%;
+    height: 500px;
+    background: #fff;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fade-in 1s forwards 1;
+}
+
+.product-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+}
+
+.tag{
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    transform-origin: left;
+    opacity: 0;
+    transform: rotate(-90deg);
+    text-transform: capitalize;
+    color: #eae3d2;
+    padding: 5px 10px;
+    width: 100px;
+    font-size: 18px;
+    text-align: center;
+    background: #292929;
+    user-select: none;
+    animation: tag .5s 1s forwards 1;
+}
+
+@keyframes tag{
+    100%{
+        opacity: 1;
+        transform: rotate(-20deg);
+    }
+}
+
+.product-listing{
+    width: 60%;
+    min-height: 500px;
+    height: auto;
+    background: #292929;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    color: #eae3d2;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fade-in 1s forwards 1;
+}
+
+@keyframes fade-in{
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+Output
+Untitled design
+
+Great Now create the product info elements.
+<div class="product-listing">
+    <div class="content">
+        <h1 class="name">leather bag</h1>
+        <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque laborum optio natus quibusdam ea nam odit vitae id unde officia.</p>
+        <p class="price">$ 299</p>
+        <div class="btn-and-rating-box">
+            <div class="rating">
+                <img src="img/star.png" alt="">
+                <img src="img/star.png" alt="">
+                <img src="img/star.png" alt="">
+                <img src="img/star.png" alt="">
+                <img src="img/star stroke.png" alt="">
+            </div>
+            <button class="btn">buy now</button>
+        </div>
+    </div>
+</div>
+.name{
+    font-family: 'dosis';
+    font-size: 70px;
+    text-transform: capitalize;
+}
+
+.info{
+    font-size: 18px;
+    line-height: 30px;
+    margin: 50px 0;
+}
+
+.price{
+    font-size: 70px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+
+.btn-and-rating-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating img{
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+}
+
+.btn{
+    background: #eae3d2;
+    color: #292929;
+    border: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #eedbaf;
+}
+Output
+capture
+
+Our product card is done. Now, let's make it responsive.
+@media (max-width: 1100px){
+    body::before{
+        transform: translateX(-50%) skewX(-5deg);
+    }
+    .product{
+        flex-direction: column;
+        width: 90%;
+        margin: 5vh 0;
+    }
+    .product-img{
+        width: 100%;
+        height: 300px;
+    }
+    .product-listing{
+        width: 100%;
+        min-height: auto;
+    }
+    .name,.price{
+        font-size: 50px;
+    }
+    .info{
+        font: 16px;
+    }
+}
+Output
+Capture2
+
+So that's it. I hope you understood each and everything. If you have doubt or I missed something let me know in the comments.
+
+Tutorials you may find Useful
+Best CSS Effect
+Music Player App
+Disney+ Clone
+Youtube API - Youtube Clone
+TMDB - Netflix Clone
+Responsive Portfolio with contact form
+Fully working Blogging website with backend
+I really appreciate if you can subscribe my youtube channel. I create awesome web contents.
+
+
+
+Thanks For reading.
+
+Discussion (8)
+Subscribe
+pic
+Add to the discussion
+ 
+httpjunkie profile image
+Eric Bishard
+•
+Aug 26
+
+I like the article, but the claim to be using only html and css is odd, because what what would you only use? Building this type of responsive component needs buying else but HTML and CSS. Responsiveness comes from using media queries which are CSS and CSS is used for styling HTML, what an I missing? Send weird to say ONLY, that's all. Great article.
+
+
+2
+ 
+kunaal438 profile image
+Modern Web
+•
+Aug 26
+
+My point for saying only was this project is made with CSS not bootstrap or any other framework that are easy to use but don't clear the basics☺️. And glad you liked the article😄😄
+
+
+2
+ 
+epicurus13 profile image
+epicurus13
+•
+Aug 26
+
+any chance to get this in a working way with html emails? i think it'd be cool, but dealing with Outlook adding anything cool to html emails is painful.
+
+
+1
+ 
+kunaal438 profile image
+Modern Web
+•
+Aug 27
+
+No you can't send emails using mail, we have mail attribute in html but this uses an email service to send mails like outlook, gmail etc. you can't send mails through only HTML because client side browsers are not able to make mails. Only servers can handle and make mail request.
+
+
+1
+ 
+meegod profile image
+Meegod
+•
+Aug 26
+
+Can you explain the use of minheiht
+
+
+1
+ 
+kunaal438 profile image
+Modern Web
+•
+Aug 26
+
+Yeah min-height is a css property that defines element's minimum height. For instance if i set "div" height to 50vh and set its min-height to 300px then its height will be 50vh of screen but can never be less than 300px. I hope you understood. ☺️
+
+
+1
+ 
+kunaal438 profile image
+Modern Web
+•
+Aug 27
+
+😁😁
+
+
+1
+Code of Conduct • Report abuse
+Read next
+shubham_ingale profile image
+jsPdf || 🖼️ Adjust image in scale Which will fit in page.
+SHUBHAM - Aug 21
+
+atulbhattsystem32 profile image
+5 Things to do before making the build for Production. (React JS)
+Atul Bhatt - Aug 24
+
+chetan_atrawalkar profile image
+🔵 CSS Responsive Sidebar Navigation.
+Chetan Atrawalkar👉CA. - Aug 24
+
+alexdevero profile image
+4 Important Differences Between Regular And Arrow Functions
+Alex Devero - Aug 23
+
+
+Modern Web
+Follow
+Hello, I am kunaal a fullstack developer.I have a youtube channel "Modern Web" where I teach to make awesome web UI/ UX. Don't forget to checkout my youtube channel
+LOCATION
+Delhi, India
+JOINED
+May 2, 2021
+More from Modern Web
+How to make instagram clone using HTML, CSS. Fully responsive.
+#html #css #javascript #webdev
+How to make fully responsive modern portfolio using pure HTML, CSS and JS.
+#html #css #javascript #webdev
+How to create Music player with pure HTML, CSS, JS
+#html #css #javascript #webdev
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #966e4f;
+    font-family: 'roboto', sans-serif;
+}
+
+body::before{
+    content: '';
+    position: absolute;
+    left: 0%;
+    transform: translateX(-50%) skewX(-15deg);
+    width: 20px;
+    height: 100%;
+    background: #966e4f;
+    border-left: 60px solid #eae3d2;
+    border-right: 30px solid #eae3d2;
+    opacity: 0;
+    animation: slide-in 2s 1.5s forwards 1;
+}
+
+@keyframes slide-in{
+    100%{
+        opacity: 1;
+        left: 50%;
+    }
+}
+
+.product{
+    position: relative;
+    width: 1000px;
+    min-width: 350px;
+    min-height: 500px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-img{
+    width: 40%;
+    height: 500px;
+    background: #fff;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fade-in 1s forwards 1;
+}
+
+.product-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+}
+
+.tag{
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    transform-origin: left;
+    opacity: 0;
+    transform: rotate(-90deg);
+    text-transform: capitalize;
+    color: #eae3d2;
+    padding: 5px 10px;
+    width: 100px;
+    font-size: 18px;
+    text-align: center;
+    background: #292929;
+    user-select: none;
+    animation: tag .5s 1s forwards 1;
+}
+
+@keyframes tag{
+    100%{
+        opacity: 1;
+        transform: rotate(-20deg);
+    }
+}
+
+.product-listing{
+    width: 60%;
+    min-height: 50px;
+    height: auto;
+    background: #292929;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    color: #eae3d2;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fade-in 1s forwards 1;
+}
+
+@keyframes fade-in{
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.name{
+    font-family: 'dosis';
+    font-size: 70px;
+    text-transform: capitalize;
+}
+
+.info{
+    font-size: 18px;
+    line-height: 30px;
+    margin: 50px 0;
+}
+
+.price{
+    font-size: 70px;
+    font-weight: 50;
+    margin-bottom: 20px;
+}
+
+.btn-and-rating-box{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating img{
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+}
+
+.btn{
+    background: #eae3d2;
+    color: #292929;
+    border: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #eedbaf;
+}
+@media (max-width: 1100px){
+    body::before{
+        transform: translateX(-50%) skewX(-5deg);
+    }
+    .product{
+        flex-direction: column;
+        width: 90%;
+        margin: 5vh 0;
+    }
+    .product-img{
+        width: 100px;
+        height: 300px;
+    }
+    .product-listing{
+        width: 100px;
+        min-height: auto;
+    }
+    .name,.price{
+        font-size: 50px;
+    }
+    .info{
+        font: 16px;
+    }
+}

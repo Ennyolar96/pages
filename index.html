@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page</title> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+   <header>
+       <nav>
+           <form id="login-form">
+            <input id="user" type="text" placeholder="Enter Your Username">
+            <p id="error" class="error">valid username</p>
+            <p id="weak" class="error">username not allow</p>
+            <p id="get"></p>
+            <input id="pass" type="password" placeholder="Enter Your Pasword">
+           </form>
+        </nav>
+   </header>
+    
+   <br>
+   <p>Total item:<span id="todo-count">0</span> </p>
+   <input id="search" type="text" placeholder="Enter Todo List Here">
+   <button id="btn-search">Add</button>
+   <ul id="todo">
+
+   </ul>
+
+</body>
+</html>
